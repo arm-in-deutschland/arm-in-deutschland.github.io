@@ -5,6 +5,8 @@
     <title>ein erklärungsversuch</title>
     <!-- amp stuff -->
     <script async src="https://cdn.ampproject.org/v0.js"></script>
+    <!-- do not forget to import async components with script!! -->
+    <script async custom-element="amp-accordion" src="https://cdn.ampproject.org/v0/amp-accordion-0.1.js"></script>
     <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
 
 
@@ -13,16 +15,58 @@
 
   <!-- component styling is here-->
   <style>
-    p {color: green}
+    body{background-color: #A5A5A2;}
+    .content{ width:70%; margin: 0 auto; background-color: white;}
+    .intro {width: 60%; margin: 0 auto;}
+
+
+  </style>
+
+
+  <!-- accordion begins here -->
+  <style amp-custom>
+  section[expanded] .show-more {
+    display: none;
+    background-color: red;
+  }
+  section:not([expanded]) .show-less {
+    display: none;
+    background-color: green;
+  }
+  .nested-accordion h4 {
+    font-size: 14px;
+    background-color: #ddd;
+  }
   </style>
 
   <!-- the acutal content -->
   <body>
-      <p>somefoohere</p>
-      <amp-img src="img/Arm-Bettler.jpg"
-        width="458"
-        height="306"
-        layout="responsive"></amp-img>
+      <div class="content">
+        <div class="intro">
+          <h2>konkrete Hintergründe für das Betteln</h2>
+          <p>Ich habe diese Seite erstellt um zu zeigen, warum ich hier stehe und nach Ihrer Unterstützung frage. Vielleicht sind die Gründe dafür nicht jedem nachvollziehbar. Trotzdem bin ich bemüht hier alle Quellen un Unterlagen beizulegen, die zeigen wie schnell man in einem der reichsten Industrieländer auf der Strasse stehen kann.</p>
 
-  </body>
+        </div>
+        <amp-img class="intro" src="img/Arm-Bettler.jpg"
+          width="458"
+          height="306"
+          layout="responsive"></amp-img>
+
+
+
+        <div class="nested-acc">
+          <amp-accordion>
+            <section expanded>
+              <h4>
+                <span class="show-more">show more</span>
+                <span class="show-less">shw less</span>
+              </h4>
+              <p>some words</p>
+            </section>
+          </amp-accordion>
+
+        </div>
+      </div>
+
+    </body>
 </html>
